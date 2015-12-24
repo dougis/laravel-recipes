@@ -1,0 +1,85 @@
+@media only screen and (min-width: 64.063em) {
+	[class*="column"] + [class*="column"]:last-child {
+		float: left;
+	}
+}
+
+@media only screen and (max-width: 64.063em) {
+	#header,
+	#header ul,
+	#footer-bottom,
+	#footer-bottom ul {
+		text-align: center!important;
+		margin: 0!important;
+	}
+
+		#header ul li,
+		#footer-bottom ul li {
+			padding: 0 0.2rem 1rem 0.2rem!important;
+			line-height: normal!important;
+		}
+
+	.logo {
+		line-height: normal!important;
+		padding: 1rem 0!important;
+		font-size: 1.6875rem!important;
+	}
+
+	form#findrecipe {
+		width: 80%!important;
+	}
+
+	h1 {
+	  font-size: 3.225rem!important; }
+
+	h2 {
+	  font-size: 2.6875rem!important; }
+
+	h3 {
+	  font-size: 2.375rem!important; }
+
+	h4 {
+	  font-size: 2.125rem!important; }
+
+	h5 {
+	  font-size: 1.825rem!important; }
+
+	h6 {
+	  font-size: 1.2rem!important; }
+
+	#header nav ul,
+	ul.mobilemenu {
+		display: none;
+	} 
+
+	ul.mobilemenu li {
+		display: block!important;
+	}
+
+		ul.mobilemenu li a {
+			display: block!important;
+			border-bottom: 2px solid rgba(255,255,255,0)!important;
+		}
+
+		ul.mobilemenu li a:hover {
+			border-bottom: 2px solid rgba(255,255,255,0)!important;
+		}
+}
+
+@media only screen and (max-width: 40em) {
+	#footer-top {
+		text-align: center;
+	}
+
+	#footer-top h4 {
+		margin: 2rem 0 1.25rem 0
+	}
+
+		#footer-top .columns:first-child h4 {
+			margin: 0 0 1.25rem 0!important;
+		}	
+
+	.filters {
+		display: none!important;
+	}
+}
