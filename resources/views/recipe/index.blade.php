@@ -32,9 +32,12 @@
             </div>
           </div>
     @endforeach
-    </div>
-    </div>
 
+    </div>
+    </div>
+    <div class="row" data-equalizer>
+    {!! $recipes->render() !!}
+    </div>
       <!-- END recipe list -->
     </section>
 
