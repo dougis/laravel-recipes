@@ -18,5 +18,7 @@ foreach (File::AllFiles(__DIR__ . '/Routes') as $partial)
 }
 
 Route::get('/', function () {
-    return view('home');
+    //return view('home');
+    return Redirect::route('recipe.index', array('sortField' => 'date_added', 'sortOrder' => 'desc', 'displayCount' => 30));
+
 });

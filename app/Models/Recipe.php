@@ -35,221 +35,29 @@ class Recipe extends Model
 	/**
 	 * @return mixed
 	 */
-	public function getName() {
-		return $this->name;
+	public function getSource() {
+		return $this->hasOne('App\Models\Source', 'id', 'source_id');
 	}
 
 	/**
 	 * @return mixed
 	 */
-	public function getIngredients() {
-		return $this->ingredients;
+	public function getClassification() {
+		return $this->hasOne('App\Models\Classification', 'id', 'classification_id');
 	}
 
-	/**
-	 * @return mixed
-	 */
-	public function getInstructions() {
-		return $this->instructions;
-	}
+    public function meals()
+    {
+    	return $this->belongsToMany('App\Models\Meal', 'recipe_meals');
+    }
 
-	/**
-	 * @return mixed
-	 */
-	public function getNotes() {
-		return $this->notes;
-	}
+    public function preparations()
+    {
+    	return $this->belongsToMany('App\Models\Preparation', 'recipe_preparations');
+    }
 
-	/**
-	 * @return mixed
-	 */
-	public function getServings() {
-		return $this->servings;
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function getSourceId() {
-		return $this->source_id;
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function getClassificationId() {
-		return $this->classification_id;
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function getDateAdded() {
-		return $this->date_added;
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function getCalories() {
-		return $this->calories;
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function getFat() {
-		return $this->fat;
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function getCholesterol() {
-		return $this->cholesterol;
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function getSodium() {
-		return $this->sodium;
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function getProtein() {
-		return $this->protein;
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function getMarked() {
-		return $this->marked;
-	}
-
-
-
-	/**
-	 * @param $value
-	 * @return $this
-	 */
-	public function setName($value) {
-		$this->name = $value;
-		return $this;
-	}
-
-	/**
-	 * @param $value
-	 * @return $this
-	 */
-	public function setIngredients($value) {
-		$this->ingredients = $value;
-		return $this;
-	}
-
-	/**
-	 * @param $value
-	 * @return $this
-	 */
-	public function setInstructions($value) {
-		$this->instructions = $value;
-		return $this;
-	}
-
-	/**
-	 * @param $value
-	 * @return $this
-	 */
-	public function setNotes($value) {
-		$this->notes = $value;
-		return $this;
-	}
-
-	/**
-	 * @param $value
-	 * @return $this
-	 */
-	public function setServings($value) {
-		$this->servings = $value;
-		return $this;
-	}
-
-	/**
-	 * @param $value
-	 * @return $this
-	 */
-	public function setSourceId($value) {
-		$this->source_id = $value;
-		return $this;
-	}
-
-	/**
-	 * @param $value
-	 * @return $this
-	 */
-	public function setClassificationId($value) {
-		$this->classification_id = $value;
-		return $this;
-	}
-
-
-	/**
-	 * @param $value
-	 * @return $this
-	 */
-	public function setCalories($value) {
-		$this->calories = $value;
-		return $this;
-	}
-
-	/**
-	 * @param $value
-	 * @return $this
-	 */
-	public function setFat($value) {
-		$this->fat = $value;
-		return $this;
-	}
-
-	/**
-	 * @param $value
-	 * @return $this
-	 */
-	public function setCholesterol($value) {
-		$this->cholesterol = $value;
-		return $this;
-	}
-
-	/**
-	 * @param $value
-	 * @return $this
-	 */
-	public function setSodium($value) {
-		$this->sodium = $value;
-		return $this;
-	}
-
-	/**
-	 * @param $value
-	 * @return $this
-	 */
-	public function setProtein($value) {
-		$this->protein = $value;
-		return $this;
-	}
-
-	/**
-	 * @param $value
-	 * @return $this
-	 */
-	public function setMarked($value) {
-		$this->marked = $value;
-		return $this;
-	}
-
-
-
+    public function courses()
+    {
+    	return $this->belongsToMany('App\Models\Course', 'recipe_courses');
+    }
 }

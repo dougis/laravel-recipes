@@ -18,12 +18,58 @@ class RecipeController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $recipes = Recipe::orderBy('name')->paginate(20);
+        $sortField = $request->get('sortField');
+        $sortOrder = $request->get('sortOrder');
+        $displayCount = $request->get('displayCount');
+        $pageTitle = 'Recipe listing';
+        $pageText = '';
+        $viewAllLink = '';
+        if ($sortOrder != 'desc')
+        {
+            $sortOrder = 'asc';
+            $orderLabel = "Ascending";
+        }
+        else
+        {
+            $orderLabel = "Descending";
+        }
+
+        if ($sortField != 'date_added')
+        {
+            $sortField = 'name';
+            $sortLabel = $sortField;
+        }
+        else
+        {
+            $sortLabel = "date added";
+            $pageTitle = 'Recent recipes';
+        }
+        if ($displayCount != 'all')
+        {
+            $displayCount = intval($displayCount, 10);
+            if ($displayCount < 30)
+            {
+                $displayCount = 30;
+            }
+            $countLabel = '';
+            $recipes = Recipe::orderBy($sortField, $sortOrder)->paginate($displayCount);
+            $pageText = " (page " . $recipes->currentPage() . ' of ' . $recipes->lastPage() . ')';
+            $viewAllLink = $request->path() . '?sortOrder=' . $sortOrder . '&sortField=' . $sortField . '&displayCount=all';
+        }
+        else // if they asked for all, get all
+        {
+            $recipes = Recipe::orderBy($sortField, $sortOrder)->get();
+            $countLabel = 'All';
+        }
+
+        $titleDetail = $countLabel .' sorted by ' . $sortLabel . $pageText;
         //$recipes = Recipe::all();
 
-        return view('recipe.index', compact('recipes'));
+        //return view('recipe.index', [$recipes, $displayCount, $sortLabel, $orderLabel, $sortField, $sortOrder, $displayCount]);
+        //return view('recipe.index', [$recipes, $displayCount, $sortLabel, $orderLabel, $sortField, $sortOrder, $displayCount]);
+        return view('recipe.index', compact('recipes', 'sortField', 'sortOrder', 'displayCount', 'titleDetail', 'pageTitle', 'viewAllLink'));
     }
 
     /**
