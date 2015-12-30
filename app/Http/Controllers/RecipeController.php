@@ -56,7 +56,7 @@ class RecipeController extends Controller
             $countLabel = '';
             $recipes = Recipe::orderBy($sortField, $sortOrder)->paginate($displayCount);
             $pageText = " (page " . $recipes->currentPage() . ' of ' . $recipes->lastPage() . ')';
-            $viewAllLink = $request->path() . '?sortOrder=' . $sortOrder . '&sortField=' . $sortField . '&displayCount=all';
+            $viewAllLink = $request->path() . '?sortOrder=' . $sortOrder . '&sortField=' . $sortField;
         }
         else // if they asked for all, get all
         {
@@ -72,31 +72,6 @@ class RecipeController extends Controller
         return view('recipe.index', compact('recipes', 'sortField', 'sortOrder', 'displayCount', 'titleDetail', 'pageTitle', 'viewAllLink'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        return view('recipe.create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @return Response
-     */
-    public function store(Request $request)
-    {
-        $this->validate($request, null);
-
-        Recipe::create($request->all());
-
-        Session::flash('flash_message', 'Recipe successfully added!');
-
-        return redirect('recipe');
-    }
 
     /**
      * Display the specified resource.
@@ -110,51 +85,4 @@ class RecipeController extends Controller
 
         return view('recipe.show', compact('recipe'));
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        $recipe = Recipe::findOrFail($id);
-
-        return view('recipe.edit', compact('recipe'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function update($id, Request $request)
-    {
-        $this->validate($request, null);
-
-        $recipe = Recipe::findOrFail($id);
-        $recipe->update($request->all());
-
-        Session::flash('flash_message', 'Recipe successfully updated!');
-
-        return redirect('recipe');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        Recipe::destroy($id);
-
-        Session::flash('flash_message', 'Recipe successfully deleted!');
-
-        return redirect('recipe');
-    }
-
 }

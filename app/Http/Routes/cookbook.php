@@ -1,4 +1,4 @@
 <?php
 
-Route::resource('recipe', 'RecipeController',
+Route::resource('cookbook', 'CookbookController',
                 ['only' => ['index', 'show']]);

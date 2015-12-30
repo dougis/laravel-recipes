@@ -1,4 +1,11 @@
 <!doctype html>
+<?php
+  if(!isset($showSearchBox))
+  {
+    $showSearchBox = false;
+  }
+?>
+
 <html class="no-js" lang="en">
   <head>
     <meta charset="utf-8" />
@@ -21,5 +28,16 @@
           </div>
         </div>
       </nav>
+      @if($showSearchBox == true)
+    <section class="content-padding recipes">
+          <section id="search-box">
+      <form id="findrecipe">
+        <div class="row collapse">
+          <div class="large-10 medium-10 small-8 columns"><input type="text" placeholder="find a recipe"></div>
+          <div class="large-2 medium-2 small-4 columns"><input type="submit" value=""></div>
+        </div>
+      </form>
+      </section>
+      @endif
     </header>
     <!-- END header -->

@@ -18,7 +18,7 @@ class Cookbook extends Model
 
     protected $guarded = [];
 
-    
+
 	/**
 	 * @return mixed
 	 */
@@ -27,7 +27,7 @@ class Cookbook extends Model
 	}
 
 
-    
+
 	/**
 	 * @param $value
 	 * @return $this
@@ -37,6 +37,23 @@ class Cookbook extends Model
 		return $this;
 	}
 
-
+    public function recipes()
+    {
+        return $this->belongsToMany('App\Models\Recipe', 'cookbook_recipes')->orderBy('recipes.classification_id')->orderBy('recipes.name');
+//         $recipeList = $this->belongsToMany('App\Models\Recipe', 'cookbook_recipes')->orderBy('recipes.classification_id')->orderBy('recipes.name');
+//         $recipeList->sort(function($a, $b)
+//         {
+//         $fa = $a->getClassification->name;
+//         $fb = $b->getClassification->name;
+//         // same classification, then sort on recipe name
+//         if ($fa === $fb)
+//         {
+//             // since name is unique they can't be equal
+//             return ($a->name > $b->name) ? 1 : -1;
+//         }
+//     return ($fa > $fb) ? 1 : -1;
+// });
+//         return($recipeList);
+    }
 
 }

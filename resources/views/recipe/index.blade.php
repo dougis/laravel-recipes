@@ -1,4 +1,8 @@
 @extends('templates.general-page')
+<?php
+  $showSearchBox = true;
+
+?>
 @section('PageTitle')
     {{ $pageTitle }}
 @stop
@@ -6,8 +10,6 @@
 
 @section('page-content')
 
-
-    <section class="content-padding recipes">
       <div class="row">
         <div class="large-12 medium-12 small-12 columns text-center">
           <div class="head align-center">
@@ -42,7 +44,13 @@
       </div>
       @if ($viewAllLink)
       <div class="row" data-equalizer>
-      <h6 class="fontsans big"><a class="recipe-link" href="/{!! $viewAllLink !!}">View All</a></h6>
+      <h6 class="fontsans big">View</h6>
+      <ul class="pagination">
+      <li><a href="/{!! $viewAllLink !!}&displayCount=10">10</a></li>
+      <li><a href="/{!! $viewAllLink !!}&displayCount=20">20</a></li>
+      <li><a href="/{!! $viewAllLink !!}&displayCount=40">40</a></li>
+      <li><a href="/{!! $viewAllLink !!}&displayCount=all">All</a></li>
+      </ul>
       @endif
       </div>
       <!-- END recipe list -->

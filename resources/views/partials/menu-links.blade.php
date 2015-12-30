@@ -1,4 +1,4 @@
-<li><a href="/">Home</a></li>
-<li><a href="about.html">About me</a></li>
-<li><a href="/recipe" class="active">My Recipes</a></li>
+<li><a href="/cookbook">Cookbooks</a></li>
+<li><a href="/">Recent recipes</a></li>
+<li><a href="/recipe">All Recipes</a></li>
 <li><a href="contact.html">Contact</a></li>
