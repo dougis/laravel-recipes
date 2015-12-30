@@ -39,7 +39,8 @@ class Cookbook extends Model
 
     public function recipes()
     {
-        return $this->belongsToMany('App\Models\Recipe', 'cookbook_recipes')->orderBy('recipes.classification_id')->orderBy('recipes.name');
+        //return $this->belongsToMany('App\Models\Recipe', 'cookbook_recipes')->orderBy('recipes.classification_id')->orderBy('recipes.name');
+        return $this->belongsToMany('App\Models\Recipe', 'cookbook_recipes')->leftJoin('classifications', 'recipes.classification_id', '=', 'classifications.id')->orderBy('classifications.name')->orderBy('recipes.name');
 //         $recipeList = $this->belongsToMany('App\Models\Recipe', 'cookbook_recipes')->orderBy('recipes.classification_id')->orderBy('recipes.name');
 //         $recipeList->sort(function($a, $b)
 //         {
