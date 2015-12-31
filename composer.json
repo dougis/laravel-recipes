@@ -8,7 +8,9 @@
         "php": ">=5.5.9",
         "laravel/framework": "5.1.*",
         "appzcoder/crud-generator": "^1.0",
-        "ignasbernotas/laravel-model-generator": "^1"
+        "ignasbernotas/laravel-model-generator": "^1",
+        "laravelcollective/html": "5.2.*",
+        "illuminate/html": "^5.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

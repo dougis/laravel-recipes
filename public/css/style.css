@@ -905,17 +905,57 @@ span.footNoteLabel{
     text-align: left;
     font-weight: bold;
 }
+/* styling for the table of contents for cookbooks (note they are only displayed on printing) */
+.cookbookChapterEntries{
+    list-style: none;
+}
+.cookbookContents{
+    list-style: none;
+}
+
+div.cookBookTOC {
+    column-width: 15em;
+    -webkit-column-width: 15em; /* Chrome, Safari, Opera */
+    -moz-column-width: 15em; /* Firefox */
+    column-gap: 2em;   /* shown in yellow */
+    -webkit-column-gap: 2em; /* Chrome, Safari, Opera */
+    -moz-column-gap: 2em; /* Firefox */
+    column-rule: 4px;
+    -webkit-column-rule: 4px;
+    -moz-column-rule: 4px;
+    padding: 5px;      /* shown in blue */
+}
+ul.cookbookContents li{
+    font-size: 1em;
+    font-weight: 600;
+    font-style: italic;
+}
+ul.cookbookChapterEntries li{
+    font-size: 0.9em;
+    font-weight: normal;
+    font-style: normal;
+}
 /* added so we can insert page breaks for printing out cookbooks */
 @media only screen
 {
     div.pageBreak{
         display: none;
     }
+    div.pageNumber{
+        display: none;
+    }
+
+    div.cookBookTOC {
+        display: none;
+    }
 }
+
 @media only print
 {
-    body{
-        height: auto;
+    body {
+        height: 11in;
+        width: 8.5in;
+        overflow:visible;
     }
     .head {
         padding: 0 0 0.45rem 0;
@@ -973,5 +1013,12 @@ span.footNoteLabel{
     .leftFootNotes{
         padding-left: 30px;
     }
+    .content-padding {
+        float:none;
+    }
     div.pageBreak {page-break-after: always;}
+    div.pageNumber{
+        float: right;
+        padding-right: 40px;
+    }
 }

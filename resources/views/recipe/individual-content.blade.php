@@ -1,7 +1,18 @@
+<?php
+    // do we have a passed in page number to use
+    if(!isset($pageNumber))
+    {
+      $pageNumber = 0;
+    }
+?>
+
       <div class="row">
         <div class="large-12 medium-12 small-12 columns text-center">
+@if ($pageNumber > 0)
+<div class="pageNumber">Page {{ $pageNumber }}</div>
+@endif
           <div class="head align-center">
-            <h3 class="margin0 fontsans">{{ $recipe->name }}</h3>
+            <h4 class="margin0 fontsans">{{ $recipe->name }}</h4>
           </div>
         </div>
       </div>
