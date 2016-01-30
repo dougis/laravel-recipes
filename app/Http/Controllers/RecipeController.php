@@ -26,26 +26,37 @@ class RecipeController extends Controller
         $pageTitle = 'Recipe listing';
         $pageText = '';
         $viewAllLink = '';
-        if ($sortOrder != 'desc')
+
+        if ($sortField == 'search')
         {
-            $sortOrder = 'asc';
-            $orderLabel = "Ascending";
+            $sortLabel = 'search results';
+            $pageTitle = 'Search Results';
         }
         else
         {
-            $orderLabel = "Descending";
+            // since we use the sort order param to grab the search params only check if this is NOT a search
+            if ($sortOrder != 'desc')
+            {
+                $sortOrder = 'asc';
+                $orderLabel = "Ascending";
+            }
+            else
+            {
+                $orderLabel = "Descending";
+            }
+            // if not a search validate the sort fields too
+            if ($sortField != 'date_added')
+            {
+                $sortField = 'name';
+                $sortLabel = $sortField;
+            }
+            else
+            {
+                $sortLabel = "date added";
+                $pageTitle = 'Recent recipes';
+            }
         }
 
-        if ($sortField != 'date_added')
-        {
-            $sortField = 'name';
-            $sortLabel = $sortField;
-        }
-        else
-        {
-            $sortLabel = "date added";
-            $pageTitle = 'Recent recipes';
-        }
         if ($displayCount != 'all')
         {
             $displayCount = intval($displayCount, 10);
@@ -54,13 +65,28 @@ class RecipeController extends Controller
                 $displayCount = 30;
             }
             $countLabel = '';
-            $recipes = Recipe::orderBy($sortField, $sortOrder)->paginate($displayCount);
+            if ($sortField == 'search')
+            {
+                $recipes = Recipe::search($sortOrder)->paginate($displayCount);
+            }
+            else
+            {
+                $recipes = Recipe::orderBy($sortField, $sortOrder)->paginate($displayCount);
+            }
+
             $pageText = " (page " . $recipes->currentPage() . ' of ' . $recipes->lastPage() . ')';
             $viewAllLink = $request->path() . '?sortOrder=' . $sortOrder . '&sortField=' . $sortField;
         }
         else // if they asked for all, get all
         {
-            $recipes = Recipe::orderBy($sortField, $sortOrder)->get();
+            if ($sortField == 'search')
+            {
+                $recipes = Recipe::search($sortOrder)->get();
+            }
+            else
+            {
+                $recipes = Recipe::orderBy($sortField, $sortOrder)->get();
+            }
             $countLabel = 'All';
         }
 

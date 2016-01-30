@@ -30,12 +30,14 @@
       @if($showSearchBox == true)
     <section class="content-padding recipes">
           <section id="search-box">
-      <form id="findrecipe">
+      {{-- <form id="findrecipe"> --}}
+      {!!  Form::open(array('url' => 'recipe', 'method' => 'get', 'id' => 'findrecipe')) !!}
+      {!! Form::hidden('sortField', 'search') !!}
         <div class="row collapse">
-          <div class="large-10 medium-10 small-8 columns"><input type="text" placeholder="find a recipe"></div>
+          <div class="large-10 medium-10 small-8 columns"><input type="text" name="sortOrder" placeholder="find a recipe"></div>
           <div class="large-2 medium-2 small-4 columns"><input type="submit" value=""></div>
         </div>
-      </form>
+      {!! Form::close() !!}
       </section>
       @endif
     </header>

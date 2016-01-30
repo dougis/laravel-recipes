@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+use Sofa\Eloquence\Eloquence;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Recipe extends Model
 {
+	use Eloquence;
 
     public $timestamps = true;
 
@@ -31,7 +32,8 @@ class Recipe extends Model
 
     protected $guarded = [];
 
-
+	// no need for this, but you can define default searchable columns:
+	protected $searchableColumns = ['name', 'ingredients'];
 	/**
 	 * @return mixed
 	 */

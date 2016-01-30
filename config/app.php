@@ -113,13 +113,11 @@ return [
         /*
          * Laravel Framework Service Providers...
          */
-        Illuminate\Foundation\Providers\ArtisanServiceProvider::class,
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
         Illuminate\Cache\CacheServiceProvider::class,
         Illuminate\Foundation\Providers\ConsoleSupportServiceProvider::class,
-        Illuminate\Routing\ControllerServiceProvider::class,
         Illuminate\Cookie\CookieServiceProvider::class,
         Illuminate\Database\DatabaseServiceProvider::class,
         Illuminate\Encryption\EncryptionServiceProvider::class,
@@ -136,6 +134,8 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        Illuminate\Html\HtmlServiceProvider::class,
+        Sofa\Eloquence\ServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -146,7 +146,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Appzcoder\CrudGenerator\CrudGeneratorServiceProvider::class,
         // Use the line below for "laravelcollective/html" package otherwise remove it.
-        //Collective\Html\HtmlServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
         Way\Generators\GeneratorsServiceProvider::class,
         Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class,
 
