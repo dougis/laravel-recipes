@@ -34,7 +34,7 @@
 
     </div>
     </div>
-    @if ($displayCount != 'all')
+    @if ($displayCount != 'all' && $viewAllLink)
       <div class="row" data-equalizer>
           @if($titleDetail)
           <h6 class="fontsans big"><strong>{{ $titleDetail }}</strong></h6>
@@ -46,8 +46,8 @@
       <div class="row" data-equalizer>
       <h6 class="fontsans big">View</h6>
       <ul class="pagination">
-      <li><a href="/{!! $viewAllLink !!}&displayCount=10">10</a></li>
       <li><a href="/{!! $viewAllLink !!}&displayCount=20">20</a></li>
+      <li><a href="/{!! $viewAllLink !!}&displayCount=20">30</a></li>
       <li><a href="/{!! $viewAllLink !!}&displayCount=40">40</a></li>
       <li><a href="/{!! $viewAllLink !!}&displayCount=all">All</a></li>
       </ul>

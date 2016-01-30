@@ -48,11 +48,11 @@ class RecipeController extends Controller
             if ($sortField != 'date_added')
             {
                 $sortField = 'name';
-                $sortLabel = $sortField;
+                $sortLabel = "sorted by recipe name";
             }
             else
             {
-                $sortLabel = "date added";
+                $sortLabel = "sorted by date added";
                 $pageTitle = 'Recent recipes';
             }
         }
@@ -60,9 +60,9 @@ class RecipeController extends Controller
         if ($displayCount != 'all')
         {
             $displayCount = intval($displayCount, 10);
-            if ($displayCount < 30)
+            if ($displayCount < 20)
             {
-                $displayCount = 30;
+                $displayCount = 20;
             }
             $countLabel = '';
             if ($sortField == 'search')
@@ -73,9 +73,11 @@ class RecipeController extends Controller
             {
                 $recipes = Recipe::orderBy($sortField, $sortOrder)->paginate($displayCount);
             }
-
-            $pageText = " (page " . $recipes->currentPage() . ' of ' . $recipes->lastPage() . ')';
-            $viewAllLink = $request->path() . '?sortOrder=' . $sortOrder . '&sortField=' . $sortField;
+            if ($recipes->lastPage() > 1)
+            {
+                $pageText = " (page " . $recipes->currentPage() . ' of ' . $recipes->lastPage() . ')';
+                $viewAllLink = $request->path() . '?sortOrder=' . $sortOrder . '&sortField=' . $sortField;
+            }
         }
         else // if they asked for all, get all
         {
@@ -90,7 +92,7 @@ class RecipeController extends Controller
             $countLabel = 'All';
         }
 
-        $titleDetail = $countLabel .' sorted by ' . $sortLabel . $pageText;
+        $titleDetail = $sortLabel . $pageText;
         //$recipes = Recipe::all();
 
         //return view('recipe.index', [$recipes, $displayCount, $sortLabel, $orderLabel, $sortField, $sortOrder, $displayCount]);
