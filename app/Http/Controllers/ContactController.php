@@ -31,8 +31,8 @@ class ContactController extends Controller
             ), function($message)
         {
             //$message->from($request->get('email'));
-            $message->from($config['admin_email']);
-            $message->to($config['admin_email'], 'Admin')->subject('Recipe site Feedback');
+            $message->from(config('mail.admin_email'));
+            $message->to(config('mail.admin_email'), 'Admin')->subject('Recipe site Feedback');
         });
         return \Redirect::route('contact.index')
         ->with('message', 'Thanks for contacting us!');
