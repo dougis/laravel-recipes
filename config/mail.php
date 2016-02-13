@@ -55,6 +55,7 @@ return [
     */
 
     'from' => ['address' => null, 'name' => null],
+    'admin_email' => env('ADMIN_EMAIL', 'root@localhost.com'),
 
     /*
     |--------------------------------------------------------------------------
