@@ -210,7 +210,7 @@
       vendors = ['webkit', 'moz'],
       requestAnimationFrame = window.requestAnimationFrame,
       cancelAnimationFrame = window.cancelAnimationFrame,
-      jqueryFxAvailable = 'undefined' !== typeof jQuery.fx;
+      jqueryFxAvailable = typeof jQuery.fx !== 'undefined';
 
   for (; lastTime < vendors.length && !requestAnimationFrame; lastTime++) {
     requestAnimationFrame = window[ vendors[lastTime] + "RequestAnimationFrame" ];
