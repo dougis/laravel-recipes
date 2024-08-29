@@ -5,3 +5,6 @@ name = "php"
 
 [[analyzers]]
 name = "javascript"
+
+[[transformers]]
+name = "prettier"
