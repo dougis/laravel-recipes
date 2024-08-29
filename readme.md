@@ -7,14 +7,15 @@ The responsive HTML template used was the GoodFood - Responsive HTML5 Template
 https://creativemarket.com/freshpixelspl/184072-GoodFood-Responsive-HTML5-Template
 
 ## Installation
+
 TODO: Describe the installation process
 
 ## Usage
+
 TODO: Write usage instructions
 
-
-
 ## Contributing
+
 Feel free to make tweaks etc if you find something that you think could be better as follows
 
 1. Fork it!
@@ -23,9 +24,6 @@ Feel free to make tweaks etc if you find something that you think could be bette
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request :D
 
-
-
 ### Licenses
 
 The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
-
