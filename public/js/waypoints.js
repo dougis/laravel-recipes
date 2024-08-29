@@ -361,7 +361,7 @@ https://github.com/imakewebthings/jquery-waypoints/blob/master/licenses.txt
     $.fn[wp] = function() {
       var args, method;
 
-      method = arguments[0], args = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
+      method = arguments[0], args = arguments.length >= 2 ? __slice.call(arguments, 1) : [];
       if (methods[method]) {
         return methods[method].apply(this, args);
       } else if ($.isFunction(method)) {
@@ -498,7 +498,7 @@ https://github.com/imakewebthings/jquery-waypoints/blob/master/licenses.txt
     $[wps] = function() {
       var args, method;
 
-      method = arguments[0], args = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
+      method = arguments[0], args = arguments.length >= 2 ? __slice.call(arguments, 1) : [];
       if (jQMethods[method]) {
         return jQMethods[method].apply(null, args);
       } else {
