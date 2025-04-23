@@ -1,0 +1,42 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+
+{
+  "name": "Codacy Rules",
+  "description": "Configuration for AI behavior when interacting with Codacy",
+  "rules": [
+    {
+      "when": "using any tool that has either one of the following arguments: provider, organization or repository",
+      "enforce": [
+        "use gh for provider, dougis for organization and laravel-recipes for repository, and avoid calling 'git remote -v' unless really necessary"
+      ]
+    },
+    {
+      "when": "after ANY successful edit_file or reapply tool call",
+      "enforce": [
+        "IMMEDIATELY run codacy_cli_analyze tool for each edited file with:",
+        "1. rootPath set to the workspace path",
+        "2. file set to the edited file path",
+        "3. no tool",
+        "AT THE END run codacy_cli_analyze tool for Trivy for the entire project with:",
+        "1. rootPath set to the workspace path",
+        "2. no file",
+        "3. tool set to Trivy",
+        "If issues are found, propose fixes for them"
+      ]
+    },
+    {
+      "when": "after adding new dependencies, libraries or packages",
+      "enforce": [
+        "IMMEDIATELY run codacy_cli_analyze tool for Trivy for:",
+        "1. rootPath set to the workspace path",
+        "2. no file",
+        "3. tool set to Trivy",
+        "If issues are found, propose fixes for them"
+      ]
+    }
+  ]
+}

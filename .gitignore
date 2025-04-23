@@ -5,3 +5,7 @@ Homestead.json
 .env
 /composer.lock
 /*.env
+
+
+#Ignore cursor AI rules
+.cursor\rules\codacy.mdc
