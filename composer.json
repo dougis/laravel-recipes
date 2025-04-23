@@ -9,9 +9,9 @@
   "type": "project",
   "require": {
     "php": "^8.2",
-    "laravel/framework": "^10.0",
+    "laravel/framework": "^10.48.23",
     "guzzlehttp/guzzle": "^7.7",
-    "laravelcollective/html": "^6.4"
+    "spatie/laravel-html": "^3.3"
   },
   "require-dev": {
     "fakerphp/faker": "^1.23",
