@@ -11,14 +11,14 @@
 /* -------------------------------
     Google Fonts
 ------------------------------------*/
-@import url("http://fonts.googleapis.com/css?family=Alegreya+Sans:300,400,700&subset=latin,latin-ext");
+@import url("https://fonts.googleapis.com/css?family=Alegreya+Sans:300,400,700&subset=latin,latin-ext");
 
-@import url("http://fonts.googleapis.com/css?family=Grand+Hotel&subset=latin,latin-ext");
+@import url("https://fonts.googleapis.com/css?family=Grand+Hotel&subset=latin,latin-ext");
 
 /* -------------------------------
     Awesome Font
 ------------------------------------*/
-@import url("http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css");
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css");
 
 /* -------------------------------
     Animate CSS
@@ -619,8 +619,7 @@ a.read:hover {
 @font-face {
   font-family: "si";
   src: url("fonts/socicon.eot");
-  src:
-    url("fonts/socicon.eot?#iefix") format("embedded-opentype"),
+  src: url("fonts/socicon.eot?#iefix") format("embedded-opentype"),
     url("fonts/socicon.woff") format("woff"),
     url("fonts/socicon.ttf") format("truetype"),
     url("fonts/socicon.svg#icomoonregular") format("svg");
